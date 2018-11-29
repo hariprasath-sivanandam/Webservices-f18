@@ -34,51 +34,45 @@ public class UserService {
 	
 	{
         List<Widget> widgets = new ArrayList<>();
-        for (String widgetTitle : widgetTitles) {
+        for (String widgetTitle : widgetTitles)
             widgets.add(new Widget(widgetTitle));
-        }
 
         List<Topic> topics = new ArrayList<>();
         for (String topicTitle : topicTitles) {
             Topic topic = new Topic(topicTitle);
-            if (topicTitle.equals("topic 1")) {
+            if (topicTitle.equals("topic 1"))
                 topic.setWidgets(widgets);
-            }
             topics.add(topic);
         }
 
         List<Lesson> lessons = new ArrayList<>();
         for (String lessonTitle : lessonTitles) {
             Lesson lesson = new Lesson(lessonTitle);
-            if (lessonTitle.equals("lesson 1")) {
+            if (lessonTitle.equals("lesson 1"))
                 lesson.setTopics(topics);
-            }
             lessons.add(lesson);
         }
 
         List<Module> modules = new ArrayList<>();
         for (String moduleTitle : moduleTitles) {
             Module module = new Module(moduleTitle);
-            if (moduleTitle.equals("Module 1")) {
+            if (moduleTitle.equals("Module 1"))
                 module.setLessons(lessons);
-            }
             modules.add(module);
         }
 
         List<Course> courses = new ArrayList<>();
         for (String courseTitle : courseTitles) {
             Course course = new Course(courseTitle);
-            if (courseTitle.equals("cs5200")) {
+            if (courseTitle.equals("cs5200"))
                 course.setModules(modules);
-            }
             courses.add(course);
         }
 
         for (String username : usernames) {
             User user = new User(username, "password");
-            if (username.equals("alice")) {
+            if (username.equals("alice"))
                 user.setCourses(courses);
-            }
             users.add(user);
         }
     }
@@ -90,7 +84,7 @@ public class UserService {
     
     @PutMapping("/api/user/{user_id}")
     public User updateUser(@PathVariable("user_id") int userId, @RequestBody User updatedUser, HttpSession session) {
-        for (User u : users) {
+        for (User u : users)
             if (u.getId() == userId) {
             	u.setPhoneNumber(updatedUser.getPhoneNumber());
             	u.setEmail(updatedUser.getEmail());
@@ -99,17 +93,14 @@ public class UserService {
                 session.setAttribute("currentUser", u);
                 return u;
             }
-        }
         return null;
     }
     
     @GetMapping("/api/user/{id}")
     public User findUserById(@PathVariable("id") int userId) {
-        for (User user : users) {
-            if (user.getId() == userId) {
+        for (User user : users)
+            if (user.getId() == userId)
                 return user;
-            }
-        }
         return null;
     }
     
@@ -126,7 +117,6 @@ public class UserService {
         	  System.out.println("repeated");
         	  return null;
           }
-		
 		session.setAttribute("currentUser", curr_user);
 		users.add(curr_user);
 		return curr_user;
@@ -146,13 +136,12 @@ public class UserService {
     @PostMapping("/api/login")
 	public User login(@RequestBody User credentials,
 			HttpSession session) {
-	 for (User user : users) {
+	 for (User user : users) 
 	  if( user.getUsername().equals(credentials.getUsername())
 	   && user.getPassword().equals(credentials.getPassword())) {
 	    session.setAttribute("currentUser", user);
 	    return user;
 	  }
-	 }
 	 return null;
 	}
 }
