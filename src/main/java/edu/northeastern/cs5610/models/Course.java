@@ -2,7 +2,6 @@ package edu.northeastern.cs5610.models;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 
 public class Course {
