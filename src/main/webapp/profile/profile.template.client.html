@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Course Manager</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="profile.style.client.css" rel="stylesheet"/>
+    <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../services/user.service.client.js"></script>
+<script src="profile.component.client.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1 id="title"> <font color="black"> Profile</font></h1>
+    <form name="profile">
+      <div class="form-group row">
+        <label for="userName" class="col-sm-2 col-form-label">
+        <b> <font color="black">Username </font></b></label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control" 
+          id="userName" name="userName" value="User Name" placeholder="Username">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="phone"
+               class="col-sm-2 col-form-label">
+          <b> <font color="black">Phone number </font></b>
+        </label>
+        <div class="col-sm-10">
+          <input type="text"
+                 class="form-control"
+                 id="phone"
+                 placeholder="Phone number">
+        </div>
+        </div>
+        <div class="form-group row">
+        <label for="email"
+               class="col-sm-2 col-form-label">
+          <b> <font color="black">Email</font></b>
+        </label>
+        <div class="col-sm-10">
+          <input type="text"
+                 class="form-control"
+                 id="email"
+                 data-validation="email"
+                 placeholder="Email">
+        </div>
+        </div>
+        <div class="form-group row">
+	        <label for="role"
+	               class="col-sm-2 col-form-label">
+	          <b> <font color="black">Role</font></b> 
+	        </label>
+	        <div class="col-sm-10">
+	          <select class="form-control" id="role">
+	          	<option disabled selected value=""> -- Select Role -- </option>
+	    		<option value="Faculty">Faculty</option>
+	    		<option value="Student">Student</option>
+	    		<option value="Admin">Admin</option>
+	  			</select>
+	        </div>
+      	</div>
+        <div class="form-group row">
+        <label for="dob"
+               class="col-sm-2 col-form-label">
+          <b> <font color="black">Date of Birth</font></b>
+        </label>
+        <div class="col-sm-10">
+          <input type="date"
+                 class="form-control"
+                 id="dob"
+                 placeholder="Date of Birth">
+        </div>
+        </div>
+      <div class="form-group row">
+      <label 
+               class="col-sm-2 col-form-label">
+           
+        </label>
+      <div class="col-sm-10">
+      <button id="updateBtn"
+              type="button"
+              class="btn btn-success btn-block">Update</button>
+              </div>
+              </div>
+              
+        <div class="form-group row">
+      <label 
+               class="col-sm-2 col-form-label">
+           
+        </label>
+      <div class="col-sm-10">
+      <button id="logoutBtn"
+              type="button"
+              class="btn btn-danger btn-block">Logout</button>
+              </div>
+</div>     
+    </form>
+  </div>
+</body>
+</html>

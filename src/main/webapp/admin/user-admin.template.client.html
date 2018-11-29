@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" >
+<title>Admin Page</title>
+<script src="/services/user.service.client.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+<h1>User Admin</h1>
+	<table class="table">
+		<thead>
+			<tr class="thead-dark">
+			 	<th>Username </th>
+			 	<th>Password</th>
+			 	<th>First name</th>
+			 	<th>Last name</th>
+			 	<th>DOB</th>
+			 	<th>Role</th>
+			 	<th>&nbsp;</th>
+			</tr>
+			<tr id="userFlds">  
+				<th><input id="tUsername" placeholder="Username" class="form-control"/></th>
+      			<th><input id="tPassword" placeholder="Password" type="password" class="form-control"/></th>
+      			<th><input id="tFirstName"placeholder="First name" class="form-control"/></th>
+    			<th><input id="tLastName"placeholder="Last name" class="form-control"/></th>
+    			<th><input id="tDate"type="date" class="form-control"/></th>
+    			<th><select id="tRole" class="form-control"><option value ="Faculty">Faculty</option>
+                  			<option value ="Student">Student</option>
+                  			<option value ="Admin">Admin</option></select></th>
+      			<th>
+      				<button id="updateBtn" class="btn btn-warning btn-sm">Update</button>
+          			<button id="createBtn" class="btn btn-primary btn-sm">Create</button>
+          		</th>
+          	</tr>
+		</thead>
+		<tbody>
+    		<tr>
+      			<td>alice</td>      
+      			<td>*****</td>   
+      			<td>Alice</td>
+      			<td>Wonderland</td> 
+      			<td>05/06/1993</td> 
+      			<td>Student</td>
+      			<td><button>Edit</button> | 
+      				<button>Remove</button>
+      			</td>
+    		</tr>
+  		</tbody>
+		
+	</table>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="/admin/user-admin.component.client.js"></script>
+</html>

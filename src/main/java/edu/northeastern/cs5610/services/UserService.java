@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,18 +14,17 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.northeastern.cs5610.models.User;
-
 import edu.northeastern.cs5610.models.Course;
 import edu.northeastern.cs5610.models.Lesson;
 import edu.northeastern.cs5610.models.Module;
 import edu.northeastern.cs5610.models.Topic;
+import edu.northeastern.cs5610.models.User;
 import edu.northeastern.cs5610.models.Widget;
 
 @RestController
 @CrossOrigin(origins="*", allowCredentials = "true", allowedHeaders = "*")
 public class UserService {
-	static List<User> users = new ArrayList<User>();
+	static List<User> allUsers = new ArrayList<User>();
 	static String[] usernames    = {"alice", "bob", "charlie"};
 	static String[] courseTitles = {"cs5200", "cs5610", "cs5500"};
 	static String[] moduleTitles = {"Module 1", "Module 2"};
@@ -73,20 +73,22 @@ public class UserService {
             User user = new User(username, "password");
             if (username.equals("alice"))
                 user.setCourses(courses);
-            users.add(user);
+            allUsers.add(user);
         }
     }
 
     @GetMapping("/api/user")
     public List<User> findAllUsers() {
-        return users;
+        return allUsers;
     }
     
     @PutMapping("/api/user/{user_id}")
     public User updateUser(@PathVariable("user_id") int userId, @RequestBody User updatedUser, HttpSession session) {
-        for (User u : users)
+        for (User u : allUsers)
             if (u.getId() == userId) {
             	u.setPhoneNumber(updatedUser.getPhoneNumber());
+            	u.setFirstName(updatedUser.getFirstName());
+            	u.setLastName(updatedUser.getLastName());
             	u.setEmail(updatedUser.getEmail());
             	u.setRole(updatedUser.getRole());
                 u.setDob(updatedUser.getDob());
@@ -98,7 +100,7 @@ public class UserService {
     
     @GetMapping("/api/user/{id}")
     public User findUserById(@PathVariable("id") int userId) {
-        for (User user : users)
+        for (User user : allUsers)
             if (user.getId() == userId)
                 return user;
         return null;
@@ -106,26 +108,38 @@ public class UserService {
     
     @PostMapping("/api/user")
 	public List<User> createUser(@RequestBody User user) {
-		users.add(user);
-		return users;
+		allUsers.add(user);
+		return allUsers;
 	}
 	
 	@PostMapping("/api/register")
 	public User register(@RequestBody User curr_user,HttpSession session) {
-		for (User u : users) 
+		for (User u : allUsers) 
           if (u.getUsername().equals(curr_user.getUsername())) {
         	  System.out.println("repeated");
         	  return null;
           }
 		session.setAttribute("currentUser", curr_user);
-		users.add(curr_user);
+		allUsers.add(curr_user);
 		return curr_user;
 	}
 	
+	@DeleteMapping("/api/user/{userId}")
+	public void deleteUser(@PathVariable("userId") int id) {
+		//users.deleteById(id);
+		List<User> new_users = new ArrayList<User>();
+		for (User u : allUsers) {
+            if (u.getId() == id)
+            	continue;
+            else
+            	new_users.add(u);
+        }
+		allUsers = new_users;   
+	}
+	
 	@GetMapping("/api/profile")
-	public User profile(HttpSession session) {
-		User currentUser = (User)session.getAttribute("currentUser");	
-		return currentUser;
+	public User profile(HttpSession session) {	
+		return (User)session.getAttribute("currentUser");
 	}
 
     @PostMapping("/api/logout")
@@ -134,13 +148,12 @@ public class UserService {
     }
 
     @PostMapping("/api/login")
-	public User login(@RequestBody User credentials,
-			HttpSession session) {
-	 for (User user : users) 
-	  if( user.getUsername().equals(credentials.getUsername())
-	   && user.getPassword().equals(credentials.getPassword())) {
-	    session.setAttribute("currentUser", user);
-	    return user;
+	public User login(@RequestBody User credentials,HttpSession session) {
+	 for (User u : allUsers) 
+	  if( u.getUsername().equals(credentials.getUsername())
+	   && u.getPassword().equals(credentials.getPassword())) {
+	    session.setAttribute("currentUser", u);
+	    return u;
 	  }
 	 return null;
 	}

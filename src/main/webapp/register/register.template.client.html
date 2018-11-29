@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Manager</title>
+    <link rel="stylesheet" href=
+            "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link href="register.style.client.css" rel="stylesheet" />
+    <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../services/user.service.client.js"></script>
+<script src="register.component.client.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1><font color="black">Sign Up</font></h1>
+    <br></br>
+    <form id="signupForm">
+        <div class="form-group row">
+            <label for="usernameFld" class="col-sm-12 col-md-3 col-lg-2 col-form-label">
+                <b> <font color="black">Username </font></b></label>
+            <div class="col-sm-12 col-md-7 col-lg-6">
+                <input class="form-control" id="usernameFld" placeholder="Username" required>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-4">
+            </div>
+        </div>
+        <div class="form-group row"></div>
+        <div class="form-group row">
+            <label for="passwordFld" class="col-sm-12 col-md-3 col-lg-2 col-form-label">
+                <b> <font color="black">Password </font></b></label>
+            <div class="col-sm-12 col-md-7 col-lg-6">
+                <input type="password" class="form-control wbdv-password-fld"
+                       id="passwordFld" placeholder="Password"
+                       required>
+                <div id="invalid-message" style="visibility: hidden">
+                    Passwords do not match!
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-4">
+
+            </div>
+        </div>
+        <div class="form-group row" >
+            <label for="verifyPasswordFld" class="col-sm-12 col-md-3 col-lg-2 col-form-label">
+                <b> <font color="black">Re-enter Password </font></b></label>
+            <div class="col-sm-12 col-md-7 col-lg-6">
+                <input type="password" class="form-control wbdv-password-fld"
+                       id="verifyPasswordFld" placeholder="Confirm Password" required>
+                <div id="valid-message" style="visibility: hidden">
+                    Passwords matched!
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-4">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-0 ccol-sm-12 col-md-3 col-lg-2"></div>
+            <div class="col-sm-12 col-md-7 col-lg-6">
+                <button type="button" id="registerBtn" class="btn btn-primary btn-block">Sign Up</button>
+                <div class="row">
+                    <div class="col-6">
+                        <a id="loginBtn" href="#" style="color:blue">Login</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-4"></div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

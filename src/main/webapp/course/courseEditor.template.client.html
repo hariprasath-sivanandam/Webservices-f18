@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+	rel="stylesheet">
+
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<link rel="stylesheet" href="courseList.style.client.css" />
+
+<meta charset="UTF-8">
+<title>Course Editor</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-4">
+				<h1>Course Editor</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2">
+				<ul class="nav flex-column nav-pills">
+					<a class="nav-link active" href="#">Module 1</a>
+					<a class="nav-link" href="#">Module 2</a>
+					<a class="nav-link" href="#">Module 3</a>
+					<a class="nav-link" href="#">Module 4</a>
+				</ul>
+			</div>
+			<div class="col-10">
+
+				<ul class="nav nav-tabs">
+					<li class="nav-item"><a class="nav-link active" href="#">Build</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#">Pages</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Theme</a></li>
+					<li class="nav-item"><a class="nav-link disabled" href="#">Store</a>
+					</li>
+				</ul>
+
+				<ul class="nav nav-pills">
+					<li class="nav-item"><a class="nav-link active" href="#">Topic 1</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#">Topic 2</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Topic 3</a></li>
+					<li class="nav-item"><a class="nav-link disabled" href="#">topic 4</a>
+					</li>
+				</ul>
+				<div>
+					<div class="container pt-5">
+						<div class="row flex-row-reverse pr-20 pb-15">
+							<div class="d-flex pr-20 m-auto float-lg-right">
+								<button class="btn btn-success m-auto">Save</button>
+							</div>
+							<div class="d-flex pr-20 m-auto float-right">
+								<h4>Preview</h4>
+								<i class="fas fa-toggle-on fa-2x"></i>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div>
+							<div class="container widget-container" style="">
+								<div class="row">
+									<div class="col-md-12 text-dark pt-2">
+										<div class="row flex-row pb-1">
+											<div class="col-md-3 d-inline-flex">
+												<h4>Heading Widget</h4>
+											</div>
+											<div class="col-md-9">
+
+												<div class="d-inline-flex pr-2 float-right">
+													<button class="btn btn-danger">
+														<i class="fa fa-times"></i>
+													</button>
+												</div>
+
+
+												<div class="d-inline-flex pr-2 float-right">
+													<button class="btn btn-warning">
+														<i class="fa fa-arrow-down"></i>
+													</button>
+												</div>
+
+
+												<div class="d-inline-flex pr-2 float-right">
+													<button class="btn btn-warning">
+														<i class="fa fa-arrow-up"></i>
+													</button>
+												</div>
+
+
+												<div class="d-inline-flex pr-1 float-right my-auto" style="">
+													<select>
+														<option>Heading</option>
+														<option>Paragraph</option>
+														<option>List</option>
+														<option>Image</option>
+														<option>Link</option>
+													</select>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Detail************************************************************************************************* -->
+						<div class="container widget-container" style="">
+							<div class="col-md-12">
+								<div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<input class="form-control" placeholder="Heading Text" /> <br />
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<select class="form-control">
+													<option value="1">Heading 1</option>
+													<option value="2">Heading 2</option>
+													<option value="3">Heading 3</option>
+												</select> <br />
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<input class="form-control" placeholder="widget name" /> <br />
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<h5>Preview</h5>
+											</div>
+										</div>
+									</div>
+									<!-- Preview end -->
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<h1>Heading 1</h1>
+											<h2>Heading 2</h2>
+											<h3>Heading 3</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Details END**********************************************************8 -->
+					</div>
+
+				</div>
+				<!-- Insert HERE -->
+				<div>
+					<div>
+						<div class="container widget-container" style="">
+							<div class="row">
+								<div class="col-md-12 text-dark pt-2">
+									<div class="row flex-row pb-1">
+										<div class="col-md-3 d-inline-flex">
+											<h4>Paragraph Widget</h4>
+										</div>
+										<div class="col-md-9">
+
+											<div class="d-inline-flex pr-2 float-right">
+												<button class="btn btn-danger">
+													<i class="fa fa-times"></i>
+												</button>
+											</div>
+
+
+											<div class="d-inline-flex pr-2 float-right">
+												<button class="btn btn-warning">
+													<i class="fa fa-arrow-down"></i>
+												</button>
+											</div>
+
+
+											<div class="d-inline-flex pr-2 float-right">
+												<button class="btn btn-warning">
+													<i class="fa fa-arrow-up"></i>
+												</button>
+											</div>
+
+
+											<div class="d-inline-flex pr-1 float-right my-auto" style="">
+												<select>
+													<option>Heading</option>
+													<option>Paragraph</option>
+													<option>List</option>
+													<option>Image</option>
+													<option>Link</option>
+												</select>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Detail************************************************************************************************* -->
+					<div class="container widget-container" style="">
+						<div class="col-md-12">
+							<div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<textarea class="form-control" placeholder="paragraph">
+											</textarea>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<input class="form-control" placeholder="widget name" /> <br />
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<h5>Preview</h5>
+										</div>
+									</div>
+								</div>
+								<!-- Preview end -->
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">Lorem ipsum</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Details END**********************************************************8 -->
+				</div>
+			</div>
+
+			<div class="container">
+				<div>
+					<div class="container widget-container" style="">
+						<div class="row">
+							<div class="col-md-12 text-dark pt-2">
+								<div class="row flex-row pb-1">
+									<div class="col-md-3 d-inline-flex">
+										<h4>List Widget</h4>
+									</div>
+									<div class="col-md-9">
+
+										<div class="d-inline-flex pr-2 float-right">
+											<button class="btn btn-danger">
+												<i class="fa fa-times"></i>
+											</button>
+										</div>
+
+
+										<div class="d-inline-flex pr-2 float-right">
+											<button class="btn btn-warning">
+												<i class="fa fa-arrow-down"></i>
+											</button>
+										</div>
+
+
+										<div class="d-inline-flex pr-2 float-right">
+											<button class="btn btn-warning">
+												<i class="fa fa-arrow-up"></i>
+											</button>
+										</div>
+
+
+										<div class="d-inline-flex pr-1 float-right my-auto" style="">
+											<select>
+												<option>Heading</option>
+												<option>Paragraph</option>
+												<option>List</option>
+												<option>Image</option>
+												<option>Link</option>
+											</select>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Detail************************************************************************************************* -->
+				<div class="container widget-container" style="">
+					<div class="col-md-12">
+						<div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<textarea class="form-control" placeholder="paragraph">
+											Put each item in a separate row
+											</textarea>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<select class="form-control">
+											<option value="1">Ordered List</option>
+											<option value="2">Unordered List</option>
+										</select> <br />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<input class="form-control" placeholder="widget name" /> <br />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<h5>Preview</h5>
+									</div>
+								</div>
+							</div>
+							<!-- Preview end -->
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<ul>
+									<li>Put each</li>
+									<li>item in</li>
+									<li>the row(unordered list)</li>
+								</ul>
+								<ol>
+									<li>Put each</li>
+									<li>item in</li>
+									<li>the row(ordered list)</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Details END**********************************************************8 -->
+			</div>
+		</div>
+
+		<div class="container">
+			<div>
+				<div class="container widget-container" style="">
+					<div class="row">
+						<div class="col-md-12 text-dark pt-2">
+							<div class="row flex-row pb-1">
+								<div class="col-md-3 d-inline-flex">
+									<h4>Image Widget</h4>
+								</div>
+								<div class="col-md-9">
+
+									<div class="d-inline-flex pr-2 float-right">
+										<button class="btn btn-danger">
+											<i class="fa fa-times"></i>
+										</button>
+									</div>
+
+
+									<div class="d-inline-flex pr-2 float-right">
+										<button class="btn btn-warning">
+											<i class="fa fa-arrow-down"></i>
+										</button>
+									</div>
+
+
+									<div class="d-inline-flex pr-2 float-right">
+										<button class="btn btn-warning">
+											<i class="fa fa-arrow-up"></i>
+										</button>
+									</div>
+
+
+									<div class="d-inline-flex pr-1 float-right my-auto" style="">
+										<select>
+											<option>Heading</option>
+											<option>Paragraph</option>
+											<option>List</option>
+											<option>Image</option>
+											<option>Link</option>
+										</select>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Detail************************************************************************************************* -->
+			<div class="container widget-container" style="">
+				<div class="col-md-12">
+					<div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input class="form-control" placeholder="paragraph">
+									http:// lorempixel.com/300/150 </input>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input class="form-control" placeholder="widget name" /> <br />
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<h5>Preview</h5>
+								</div>
+							</div>
+						</div>
+						<!-- Preview end -->
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<img src="running-icon-16.png" alt="image">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Details END**********************************************************8 -->
+		</div>
+	</div>
+
+	<div class="container">
+		<div>
+			<div class="container widget-container" style="">
+				<div class="row">
+					<div class="col-md-12 text-dark pt-2">
+						<div class="row flex-row pb-1">
+							<div class="col-md-3 d-inline-flex">
+								<h4>Link Widget</h4>
+							</div>
+							<div class="col-md-9">
+
+								<div class="d-inline-flex pr-2 float-right">
+									<button class="btn btn-danger">
+										<i class="fa fa-times"></i>
+									</button>
+								</div>
+
+
+								<div class="d-inline-flex pr-2 float-right">
+									<button class="btn btn-warning">
+										<i class="fa fa-arrow-down"></i>
+									</button>
+								</div>
+
+
+								<div class="d-inline-flex pr-2 float-right">
+									<button class="btn btn-warning">
+										<i class="fa fa-arrow-up"></i>
+									</button>
+								</div>
+
+
+								<div class="d-inline-flex pr-1 float-right my-auto" style="">
+									<select>
+										<option>Heading</option>
+										<option>Paragraph</option>
+										<option>List</option>
+										<option>Image</option>
+										<option>Link</option>
+									</select>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Detail************************************************************************************************* -->
+		<div class="container widget-container" style="">
+			<div class="col-md-12">
+				<div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<input class="form-control" placeholder="link">
+								https://ww.youtube.com/user/hari </input>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<input class="form-control" placeholder="link"> Link
+								text </input>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<input class="form-control" placeholder="widget name" /> <br />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<h5>Preview</h5>
+							</div>
+						</div>
+					</div>
+					<!-- Preview end -->
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<a href="ww.google.com">Google</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Details END**********************************************************8 -->
+	</div>
+	</div>
+
+
+
+
+
+	<!-- Insert End -->
+	<div class="container pt-1">
+		<div class="row flex-row-reverse pr-20 pb-15">
+			<div class="row flex-row-reverse pr-20 pb-15  m-auto">
+				<button class="btn btn-danger">
+					<i class="fa fa-plus-square"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+
+	</div>
+</body>
+</html>
