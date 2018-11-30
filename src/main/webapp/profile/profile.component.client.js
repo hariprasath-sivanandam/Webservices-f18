@@ -20,14 +20,15 @@
 	
 	function populateContent(user){
 		currentUser = user;
+		console.log(currentUser)
 		$username.val(user.username);
-		$phone.val(user.phoneNo);
+		$phone.val(user.phoneNumber);
 		$email.val(user.email);
 		$role.val(user.role);
-		if(user.dateOfBirth)
-			$dob.val(user.dateOfBirth.slice(0,10));
+		if(user.dob)
+			$dob.val(user.dob.slice(0,10));
 		else
-			$dob.val(user.dateOfBirth);
+			$dob.val(user.dob);
 	}
 	
 	function profileLoad() {
@@ -45,10 +46,10 @@
 	function updateUser() {
 	    var userObj = {
 	    		username:$username.val(),
-	    		phoneNo: $phone.val(),
+	    		phoneNumber: $phone.val(),
 	    		email: $email.val(),
 	    		role: $role.val(),
-	    		dateOfBirth: $dob.val()
+	    		dob: $dob.val()
 	    };
 	    userService.updateUser(userObj,currentUser.id);
 	}

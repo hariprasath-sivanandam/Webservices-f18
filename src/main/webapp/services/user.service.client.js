@@ -65,13 +65,16 @@ function UserServiceClient() {
 	}
     
     function registerUser(user){
+    	//alert(user)
     	return fetch('/api/register', {
 			method : 'post',
-			body : JSON.stringify(user),
+			body : user,
 			headers : {
 				'Content-Type' : 'application/json'
 			},
 			'credentials' : 'include'
+    	}).then(function(response){
+    		return JSON.stringify(response)
     	})
     }
 }

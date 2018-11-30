@@ -26,50 +26,40 @@
 		tbody.empty();
 		for (var i = 0; i < users.length; i++) {
 			var user = users[i];
-
 			var tr = $('<tr>');
 			var td = $('<td>');
 			td.append(user.username);
 			tr.append(td);
-
 			td = $('<td>');
 			td.append('*******');
 			tr.append(td);
-
 			td = $('<td>');
 			td.append(user.firstname);
 			tr.append(td);
-
 			td = $('<td>');
 			td.append(user.lastname);
 			tr.append(td);
-
 			td = $('<td>');
 			dob = user.dateOfBirth
 			if (user.dateOfBirth != null)
 				dob = user.dateOfBirth.slice(0, 10)
-
 			td.append(dob);
 			tr.append(td);
-
 			td = $('<td>');
 			td.append(user.role);
 			tr.append(td);
-
 			td = $('<td>');
 			var deleteBtn = $('<button class="btn btn-outline-danger btn-sm">DELETE</button>');
 			deleteBtn.click(deleteUser);
 			deleteBtn.attr('id', user.id);
 			td.append(deleteBtn);
 			tr.append(td);
-
 			var editBtn = $('<button class="btn btn-outline-dark btn-sm">Edit</button>');
 			editBtn.click(editUser);
 			editBtn.attr('index', i);
 			editBtn.attr('id', user.id);
 			td.append(editBtn);
 			tr.append(td);
-
 			tr.appendTo(tbody);
 		}
 	}
@@ -95,7 +85,6 @@
 		if (userGlobal[idx].dateOfBirth != null)
 			dob = userGlobal[idx].dateOfBirth.slice(0, 10)
 		$dob.val(dob);
-
 	}
 
 	function updateUser() {
