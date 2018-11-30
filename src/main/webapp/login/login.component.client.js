@@ -26,20 +26,14 @@
 			var userObjStr = JSON.stringify(userObj);
 			userService.loginUser(userObjStr)
 			.then(function (response){
-				if(response.status == 200){
-					navigateToProfile();}
+				if(response!=null)
+					window.location.href = "/profile/profile.template.client.html";
 				else
-					loginfailed();
+					alert("Enter the Correct Credentials");
 			});
 		}
 		else
-			alert("Enter the User Credentials. New User Please Sign up")
+			alert("Enter the User Credentials.If you are a New User Please Sign up")
 	}
 
-	function navigateToProfile(response) {
-		window.location.href = "/profile/profile.template.client.html";
-	}
-	function loginfailed() {
-		alert("Enter the Correct Credentials");
-	}
 })();

@@ -114,7 +114,7 @@ public class UserService {
 	}
 	
 	@PostMapping("/api/register")
-	public User register(@RequestBody User curr_user,HttpSession session,  HttpServletResponse response) {
+	public User register(@RequestBody User curr_user,HttpSession session, HttpServletResponse response) {
 		for (User u : allUsers) 
           if (u.getUsername().equals(curr_user.getUsername())) {
         	  System.out.println("repeated");
@@ -150,13 +150,14 @@ public class UserService {
     }
 
     @PostMapping("/api/login")
-	public User login(@RequestBody User credentials,HttpSession session) {
+	public User login(@RequestBody User credentials,HttpSession session, HttpServletResponse response) {
 	 for (User u : allUsers) 
 	  if( u.getUsername().equals(credentials.getUsername())
 	   && u.getPassword().equals(credentials.getPassword())) {
 	    session.setAttribute("currentUser", u);
 	    return u;
 	  }
+	 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 	 return null;
 	}
 }

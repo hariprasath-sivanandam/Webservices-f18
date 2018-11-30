@@ -32,7 +32,13 @@ function UserServiceClient() {
 				'Content-Type' : 'application/json'
 			},
 			'credentials' : 'include'
-		});
+		}).then(function(response) {
+            if(response.status==403){
+            	return null;
+            }
+            else
+            	return response.json();
+		})
     }
     
     function getUser() {
