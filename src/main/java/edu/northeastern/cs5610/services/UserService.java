@@ -3,6 +3,7 @@ package edu.northeastern.cs5610.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -113,10 +114,11 @@ public class UserService {
 	}
 	
 	@PostMapping("/api/register")
-	public User register(@RequestBody User curr_user,HttpSession session) {
+	public User register(@RequestBody User curr_user,HttpSession session,  HttpServletResponse response) {
 		for (User u : allUsers) 
           if (u.getUsername().equals(curr_user.getUsername())) {
         	  System.out.println("repeated");
+        	  response.setStatus(HttpServletResponse.SC_CONFLICT);
         	  return null;
           }
 		session.setAttribute("currentUser", curr_user);

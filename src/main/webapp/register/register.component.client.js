@@ -25,17 +25,14 @@
 		if (passwordVal == passwordVeirfyFld && passwordVal.length > 0
 				&& passwordVeirfyFld.length > 0) {
 			var user = JSON.stringify(user);
-			userService.registerUser(user).then(registrationSuccessful, registrationFailed);
-		} else
+			userService.registerUser(user).then(function(response){
+				if(response!=null)
+		            window.location='/profile/profile.template.client.html';
+		        else
+		        	alert("UserName Alreay Taken!!! Try with another name.");		        
+			})
+		} 
+		else
 			alert("Password does not match. Please try again!!!");
 	}
-    
-	function registrationSuccessful() {
-		console.log("successful");
-		window.location.href = '/profile/profile.template.client.html';
-	}
-
-	function registrationFailed() {
-		alert("Login Failed");
-	}  
 })();

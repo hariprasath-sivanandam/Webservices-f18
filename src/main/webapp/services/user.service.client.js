@@ -65,7 +65,6 @@ function UserServiceClient() {
 	}
     
     function registerUser(user){
-    	//alert(user)
     	return fetch('/api/register', {
 			method : 'post',
 			body : user,
@@ -74,7 +73,13 @@ function UserServiceClient() {
 			},
 			'credentials' : 'include'
     	}).then(function(response){
-    		return JSON.stringify(response)
-    	})
+    		console.log(response);
+    		console.log(response.status);
+            if(response.status==409){
+                return null;
+            }else{
+                return response.json();
+            }
+        });
     }
 }
