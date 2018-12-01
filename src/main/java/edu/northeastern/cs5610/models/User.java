@@ -3,8 +3,18 @@ package edu.northeastern.cs5610.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+@Entity
 public class User {
 	public static int autoIncrement = 0;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id = autoIncrement++;
 	private String username;
 	private String password;
@@ -14,6 +24,7 @@ public class User {
 	private String phoneNumber;
 	private String role;
 	private String dob;
+	@Transient
 	private List<Course> courses = new ArrayList<Course>();
 	
 	public User() {}

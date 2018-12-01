@@ -3,9 +3,21 @@ package edu.northeastern.cs5610.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+@Entity
 public class Topic {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id = User.autoIncrement++;
 	private String title;
+	@OneToMany(mappedBy="topic")
 	private List<Widget> widgets = new ArrayList<Widget>();
 	
 	public Topic() {}
