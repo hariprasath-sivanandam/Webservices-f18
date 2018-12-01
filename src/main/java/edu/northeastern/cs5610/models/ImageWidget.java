@@ -13,5 +13,4 @@ public class ImageWidget {
     public void setSrc(String src) {
         this.src = src;
     }
-
 }
