@@ -2,10 +2,12 @@ package edu.northeastern.cs5610.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,7 @@ import edu.northeastern.cs5610.models.Module;
 import edu.northeastern.cs5610.models.Topic;
 import edu.northeastern.cs5610.models.User;
 import edu.northeastern.cs5610.models.Widget;
+import edu.northeastern.cs5610.repositories.UserRepository;
 
 @RestController
 @CrossOrigin(origins="*", allowCredentials = "true", allowedHeaders = "*")
@@ -77,6 +80,9 @@ public class UserService {
             allUsers.add(user);
         }
     }
+	
+	@Autowired
+	UserRepository userRepository;
 
     @GetMapping("/api/user")
     public List<User> findAllUsers() {
@@ -101,10 +107,14 @@ public class UserService {
     
     @GetMapping("/api/user/{id}")
     public User findUserById(@PathVariable("id") int userId) {
-        for (User user : allUsers)
-            if (user.getId() == userId)
-                return user;
-        return null;
+    	Optional<User> resultSet= userRepository.findById(userId);
+    	if(resultSet.isPresent())
+    		return resultSet.get();
+    	return null;
+//        for (User user : allUsers)
+//            if (user.getId() == userId)
+//                return user;
+//        return null;
     }
     
     @PostMapping("/api/user")
