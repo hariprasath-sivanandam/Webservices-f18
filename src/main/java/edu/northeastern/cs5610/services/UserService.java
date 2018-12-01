@@ -143,15 +143,16 @@ public class UserService {
 	
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int id) {
+		userRepository.deleteById(id);
 		//users.deleteById(id);
-		List<User> new_users = new ArrayList<User>();
-		for (User u : allUsers) {
-            if (u.getId() == id)
-            	continue;
-            else
-            	new_users.add(u);
-        }
-		allUsers = new_users;   
+//		List<User> new_users = new ArrayList<User>();
+//		for (User u : allUsers) {
+//            if (u.getId() == id)
+//            	continue;
+//            else
+//            	new_users.add(u);
+//        }
+//		allUsers = new_users;   
 	}
 	
 	@GetMapping("/api/profile")
