@@ -127,15 +127,18 @@ public class UserService {
 	
 	@PostMapping("/api/register")
 	public User register(@RequestBody User curr_user,HttpSession session, HttpServletResponse response) {
-		for (User u : allUsers) 
+		for (User u : findAllUsers()) 
           if (u.getUsername().equals(curr_user.getUsername())) {
         	  System.out.println("repeated");
         	  response.setStatus(HttpServletResponse.SC_CONFLICT);
         	  return null;
           }
-		session.setAttribute("currentUser", curr_user);
-		allUsers.add(curr_user);
-		return curr_user;
+		User saved_user = userRepository.save(curr_user);
+		session.setAttribute("currentUser", saved_user);
+		return saved_user;
+//		session.setAttribute("currentUser", curr_user);
+//		allUsers.add(curr_user);
+//		return curr_user;
 	}
 	
 	@DeleteMapping("/api/user/{userId}")
