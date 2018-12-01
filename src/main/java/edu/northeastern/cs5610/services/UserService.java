@@ -86,7 +86,8 @@ public class UserService {
 
     @GetMapping("/api/user")
     public List<User> findAllUsers() {
-        return allUsers;
+    	return (List<User>) userRepository.findAll();
+    	// return allUsers;
     }
     
     @PutMapping("/api/user/{user_id}")
