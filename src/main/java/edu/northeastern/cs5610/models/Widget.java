@@ -4,17 +4,37 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ManyToAny;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class Widget {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id = User.autoIncrement++;
 	private String title;
+	private String widgetType;
+    public int getWidgetOrder() {
+		return widgetOrder;
+	}
+	public void setWidgetOrder(int widgetOrder) {
+		this.widgetOrder = widgetOrder;
+	}
+	private int widgetOrder;
+	public String getWidgetType() {
+		return widgetType;
+	}
+	public void setWidgetType(String widgetType) {
+		this.widgetType = widgetType;
+	}
 	@ManyToOne
+	@JsonIgnore
 	private Topic topic;
 	public Topic getTopic() {
 		return topic;
