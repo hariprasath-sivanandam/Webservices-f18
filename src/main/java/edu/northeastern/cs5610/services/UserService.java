@@ -118,9 +118,10 @@ public class UserService {
     }
     
     @PostMapping("/api/user")
-	public List<User> createUser(@RequestBody User user) {
-		allUsers.add(user);
-		return allUsers;
+	public User createUser(@RequestBody User user) {
+		return userRepository.save(user);
+//		allUsers.add(user);
+//		return allUsers;
 	}
 	
 	@PostMapping("/api/register")
