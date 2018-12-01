@@ -92,16 +92,18 @@ public class UserService {
     
     @PutMapping("/api/user/{user_id}")
     public User updateUser(@PathVariable("user_id") int userId, @RequestBody User updatedUser, HttpSession session) {
-        for (User u : allUsers)
-            if (u.getId() == userId) {
+        //for (User u : findAllUsers())
+    	Optional<User> optional = userRepository.findById(userId);
+            if (optional.isPresent()) {
+            	User u = optional.get();
             	u.setPhoneNumber(updatedUser.getPhoneNumber());
             	u.setFirstName(updatedUser.getFirstName());
             	u.setLastName(updatedUser.getLastName());
             	u.setEmail(updatedUser.getEmail());
             	u.setRole(updatedUser.getRole());
                 u.setDob(updatedUser.getDob());
-                session.setAttribute("currentUser", u);
-                return u;
+                //session.setAttribute("currentUser", u);
+                return userRepository.save(u);
             }
         return null;
     }
@@ -167,12 +169,17 @@ public class UserService {
 
     @PostMapping("/api/login")
 	public User login(@RequestBody User credentials,HttpSession session, HttpServletResponse response) {
-	 for (User u : allUsers) 
-	  if( u.getUsername().equals(credentials.getUsername())
-	   && u.getPassword().equals(credentials.getPassword())) {
-	    session.setAttribute("currentUser", u);
-	    return u;
-	  }
+    	User user= userRepository.findUserByCredentials(credentials.getUsername(), credentials.getPassword());
+		if(user != null) {
+			session.setAttribute("currentUser", user);
+			return user;
+		}
+//	 for (User u : allUsers) 
+//	  if( u.getUsername().equals(credentials.getUsername())
+//	   && u.getPassword().equals(credentials.getPassword())) {
+//	    session.setAttribute("currentUser", u);
+//	    return u;
+//	  }
 	 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 	 return null;
 	}
