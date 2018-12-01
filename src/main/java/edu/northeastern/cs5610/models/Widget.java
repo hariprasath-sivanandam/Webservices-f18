@@ -15,11 +15,27 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class Widget {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id = User.autoIncrement++;
 	private String title;
+	private String text;
+	private String name;
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	private String widgetType;
+	
     public int getWidgetOrder() {
 		return widgetOrder;
 	}
