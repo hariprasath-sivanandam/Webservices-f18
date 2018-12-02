@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Module {
@@ -15,8 +19,19 @@ public class Module {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id = User.autoIncrement++;
 	private String title;
-	@Transient
+	
+	public Course getCourse() {
+		return course;
+	}
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	@OneToMany(mappedBy="module")
 	private List<Lesson> lessons = new ArrayList<Lesson>();
+	
+	@ManyToOne
+	@JsonIgnore
+	private Course course;
 	public Module() {}
 	public Module(String title) {
 		this.title = title;

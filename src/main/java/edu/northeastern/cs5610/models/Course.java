@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Course {
@@ -15,8 +19,12 @@ public class Course {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String title;
-	@Transient
+	
+	@OneToMany(mappedBy="course")
     private List<Module> modules = new ArrayList<>();
+	
+	@ManyToOne
+	private User owner;
     
     public Course() {}
     
@@ -24,8 +32,17 @@ public class Course {
         this.title = title;
     }
     
-    public Course(int i, String string) {
-		id = i; title = string;
+    public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+
+	public Course(int i, String string) {
+		id = i; 
+		title = string;
 	}
     
     public Course(int id, String title, List<Module> modules) {
