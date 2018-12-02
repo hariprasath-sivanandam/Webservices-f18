@@ -1,6 +1,8 @@
 package edu.northeastern.cs5610.services;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,10 +14,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.northeastern.cs5610.models.Course;
 import edu.northeastern.cs5610.models.Lesson;
 import edu.northeastern.cs5610.models.Module;
-import edu.northeastern.cs5610.models.User;
+import edu.northeastern.cs5610.repositories.CourseRepository;
+import edu.northeastern.cs5610.repositories.LessonRepository;
+import edu.northeastern.cs5610.repositories.ModuleRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -26,35 +29,62 @@ public class LessonService {
 	CourseService courseService;
 	@Autowired
 	ModuleService moduleService;
+	@Autowired
+	LessonRepository lessonRepository;
+	@Autowired
+	ModuleRepository moduleRepository;
+	@Autowired
+	CourseRepository courseRepository;
 
 	@PostMapping("/api/module/{mid}/lesson")
-	public List<Lesson> createLesson(@PathVariable("mid") int moduleId, @RequestBody Lesson lesson) {
-		Module module = moduleService.findModuleById(moduleId);
-		module.getLessons().add(lesson);
-		return module.getLessons();
+	public Lesson createLesson(@PathVariable("mid") int moduleId, @RequestBody Lesson newLesson) {
+		Optional<Module> data = moduleRepository.findById(moduleId);
+		if(data.isPresent()) {
+			Module module = data.get();
+			newLesson.setModule(module);
+			List<Lesson> new_lesson = module.getLessons();
+		    new_lesson.add(newLesson);
+		    module.setLessons(new_lesson);
+			return lessonRepository.save(newLesson);
+		}
+		return null;
+//		Module module = moduleService.findModuleById(moduleId);
+//		module.getLessons().add(lesson);
+//		return module.getLessons();
 	}
 
 	@GetMapping("/api/module/{moduleId}/lesson")
-	public List<Lesson> findAllLessons(@PathVariable("moduleId") int moduleId) {
-		Module module = moduleService.findModuleById(moduleId);
-		return module.getLessons();
+	public Iterable<Lesson> findAllLessons(@PathVariable("moduleId") int moduleId) {
+		Optional<Module> data = moduleRepository.findById(moduleId);
+		if(data.isPresent()) {
+			Module module = data.get();
+			return module.getLessons();
+		}
+		return null;
+//		Module module = moduleService.findModuleById(moduleId);
+//		return module.getLessons();
 	}
 
 	@GetMapping("/api/lesson/{lid}")
 	public Lesson findLessonById(@PathVariable("lid") int lessonId) {
-		List<User> allUsers = userService.findAllUsers();
-		for (User u : allUsers) {
-			List<Course> allCourses = u.getCourses();
-			for (Course c : allCourses) {
-				List<Module> allModules = c.getModules();
-				for (Module m : allModules) {
-					List<Lesson> allLessons = m.getLessons();
-					for (Lesson l : allLessons)
-						if (l.getId() == lessonId)
-							return l;
-				}
-			}
+		Optional<Lesson> data = lessonRepository.findById(lessonId);
+		if(data.isPresent()) {
+			Lesson lesson = data.get();
+			return lesson;
 		}
+//		List<User> allUsers = userService.findAllUsers();
+//		for (User u : allUsers) {
+//			List<Course> allCourses = u.getCourses();
+//			for (Course c : allCourses) {
+//				List<Module> allModules = c.getModules();
+//				for (Module m : allModules) {
+//					List<Lesson> allLessons = m.getLessons();
+//					for (Lesson l : allLessons)
+//						if (l.getId() == lessonId)
+//							return l;
+//				}
+//			}
+//		}
 		return null;
 	}
 
@@ -67,24 +97,32 @@ public class LessonService {
 	}
 
 	@DeleteMapping("/api/lesson/{lid}")
-	public List<Lesson> deleteLesson(@PathVariable("lid") int lid) {
-		List<User> allUsers = userService.findAllUsers();
-		for (User u : allUsers) {
-			List<Course> allCourses = u.getCourses();
-			for (Course c : allCourses) {
-				List<Module> allModules = c.getModules();
-				for (Module m : allModules) {
-					List<Lesson> allLessons = m.getLessons();
-					for (Lesson l : allLessons) {
-						if (l.getId() == lid) {
-							allLessons.remove(l);
-							m.setLessons(allLessons);
-							return m.getLessons();
-						}
-					}
-				}
-			}
-		}
-		return null;
+	public void deleteLesson(@PathVariable("lid") int lid) {
+		Module module  = findLessonById(lid).getModule();
+    	List<Lesson> lessons = module.getLessons();
+    	Iterator<Lesson> iterator= lessons.iterator();
+    	while (iterator.hasNext()) {
+    		   Lesson l = iterator.next();
+    		  if(l.getId()==lid)
+    		    iterator.remove();
+    	}
+//		List<User> allUsers = userService.findAllUsers();
+//		for (User u : allUsers) {
+//			List<Course> allCourses = u.getCourses();
+//			for (Course c : allCourses) {
+//				List<Module> allModules = c.getModules();
+//				for (Module m : allModules) {
+//					List<Lesson> allLessons = m.getLessons();
+//					for (Lesson l : allLessons) {
+//						if (l.getId() == lid) {
+//							allLessons.remove(l);
+//							m.setLessons(allLessons);
+//							return m.getLessons();
+//						}
+//					}
+//				}
+//			}
+//		}
+		lessonRepository.deleteById(lid);
 	}
 }

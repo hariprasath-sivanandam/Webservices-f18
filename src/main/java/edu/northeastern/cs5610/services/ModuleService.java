@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.northeastern.cs5610.models.Course;
 import edu.northeastern.cs5610.models.Module;
-import edu.northeastern.cs5610.models.User;
 import edu.northeastern.cs5610.repositories.CourseRepository;
 import edu.northeastern.cs5610.repositories.ModuleRepository;
 
@@ -88,7 +87,7 @@ public class ModuleService {
     }
     
     @DeleteMapping("/api/module/{mid}")
-    public List<Module> deleteModule(@PathVariable("mid") int moduleId) {
+    public void deleteModule(@PathVariable("mid") int moduleId) {
     	Course course  = findModuleById(moduleId).getCourse();
     	List<Module> modules = course.getModules();
     	Iterator<Module> iterator= modules.iterator();
@@ -111,6 +110,5 @@ public class ModuleService {
 //                  }
 //          }
 //      }
-      return null;
   }	
 }
