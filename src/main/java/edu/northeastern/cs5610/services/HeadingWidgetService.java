@@ -37,7 +37,7 @@ public class HeadingWidgetService {
 		if(data.isPresent()) {
 			Topic topic = data.get();
 			newWidget.setTopic(topic);
-			newWidget.setType("HEADING");
+			newWidget.setWidgetType("HEADING");
 			List<Widget> new_widgets = topic.getWidgets();
 			new_widgets.add(newWidget);
 		    topic.setWidgets(new_widgets);
@@ -59,6 +59,10 @@ public class HeadingWidgetService {
 	 @PutMapping("/api/heading/widget/{widget_id}")
 	 public HeadingWidget updateWidget(@PathVariable("widget_id") int widget_id, @RequestBody HeadingWidget new_widget) {
 		 HeadingWidget curr_widget = findWidgetById(widget_id);
+		 curr_widget.setTitle(new_widget.getTitle());
+		 curr_widget.setText(new_widget.getText());
+		 curr_widget.setName(new_widget.getName());
+		 curr_widget.setWidgetOrder(new_widget.getWidgetOrder());
 		 curr_widget.setSize(new_widget.getSize());
          return headingWidgetRepository.save(curr_widget);
 	 }

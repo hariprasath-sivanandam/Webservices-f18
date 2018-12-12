@@ -99,6 +99,10 @@ public class WidgetService {
 	 public Widget updateWidget(@PathVariable("widget_id") int widget_id, @RequestBody Widget new_widget) {
 		 Widget curr_widget = findWidgetById(widget_id);
 		 curr_widget.setTitle(new_widget.getTitle());
+		 curr_widget.setText(new_widget.getText());
+		 curr_widget.setName(new_widget.getName());
+		 curr_widget.setWidgetOrder(new_widget.getWidgetOrder());
+		 curr_widget.setWidgetType(new_widget.getWidgetType());
          return curr_widget;
 	 }
 	 

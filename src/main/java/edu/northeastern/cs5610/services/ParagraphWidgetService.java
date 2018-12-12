@@ -37,7 +37,7 @@ public class ParagraphWidgetService {
 		if(data.isPresent()) {
 			Topic topic = data.get();
 			newWidget.setTopic(topic);
-			newWidget.setType("PARAGRAPH");
+			newWidget.setWidgetType("PARAGRAPH");
 			List<Widget> new_widgets = topic.getWidgets();
 			new_widgets.add(newWidget);
 		    topic.setWidgets(new_widgets);
@@ -59,7 +59,10 @@ public class ParagraphWidgetService {
 	 @PutMapping("/api/paragraph/widget/{widget_id}")
 	 public ParagraphWidget updateWidget(@PathVariable("widget_id") int widget_id, @RequestBody ParagraphWidget new_widget) {
 		 ParagraphWidget curr_widget = findWidgetById(widget_id);
-		 //curr_widget.setSize(new_widget.getSize());
+		 curr_widget.setTitle(new_widget.getTitle());
+		 curr_widget.setText(new_widget.getText());
+		 curr_widget.setName(new_widget.getName());
+		 curr_widget.setWidgetOrder(new_widget.getWidgetOrder());
          return paragraphWidgetRepository.save(curr_widget);
 	 }
 	 
