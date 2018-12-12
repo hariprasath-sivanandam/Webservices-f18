@@ -22,6 +22,12 @@ public class Widget {
 	private String title;
 	private String text;
 	private String name;
+	private int widgetOrder;
+	private String widgetType;
+	@ManyToOne
+	@JsonIgnore
+	private Topic topic;
+	
 	public String getText() {
 		return text;
 	}
@@ -34,7 +40,6 @@ public class Widget {
 	public void setName(String name) {
 		this.name = name;
 	}
-	private String widgetType;
 	
     public int getWidgetOrder() {
 		return widgetOrder;
@@ -42,16 +47,14 @@ public class Widget {
 	public void setWidgetOrder(int widgetOrder) {
 		this.widgetOrder = widgetOrder;
 	}
-	private int widgetOrder;
+	
 	public String getWidgetType() {
 		return widgetType;
 	}
 	public void setWidgetType(String widgetType) {
 		this.widgetType = widgetType;
 	}
-	@ManyToOne
-	@JsonIgnore
-	private Topic topic;
+	
 	public Topic getTopic() {
 		return topic;
 	}

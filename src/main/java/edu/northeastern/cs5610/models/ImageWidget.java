@@ -3,7 +3,7 @@ package edu.northeastern.cs5610.models;
 import javax.persistence.Entity;
 
 @Entity
-public class ImageWidget {
+public class ImageWidget extends Widget {
 	private String src;
 
     public String getSrc() {

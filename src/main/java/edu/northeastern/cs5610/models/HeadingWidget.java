@@ -3,7 +3,7 @@ package edu.northeastern.cs5610.models;
 import javax.persistence.Entity;
 
 @Entity
-public class HeadingWidget {
+public class HeadingWidget extends Widget{
 	private int size;
 
 	public int getSize() {
