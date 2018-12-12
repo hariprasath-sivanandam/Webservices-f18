@@ -60,6 +60,7 @@ public class TopicService {
 			List<Topic> new_topic = lesson.getTopics();
 			new_topic.add(newTopic);
 		    lesson.setTopics(new_topic);
+		    lessonRepository.save(lesson);
 			return topicRepository.save(newTopic);
 		}
 		return null;
@@ -112,6 +113,7 @@ public class TopicService {
 	    		  if(t.getId()==tid)
 	    		    iterator.remove();
 	    	}
+	    	lessonRepository.save(lesson);
 			topicRepository.deleteById(tid);
 //	        List<User> allUSers = userService.findAllUsers();
 //	        for (User u : allUSers) {

@@ -45,6 +45,7 @@ public class LessonService {
 			List<Lesson> new_lesson = module.getLessons();
 		    new_lesson.add(newLesson);
 		    module.setLessons(new_lesson);
+		    moduleRepository.save(module);
 			return lessonRepository.save(newLesson);
 		}
 		return null;
@@ -106,6 +107,8 @@ public class LessonService {
     		  if(l.getId()==lid)
     		    iterator.remove();
     	}
+    	moduleRepository.save(module);
+		lessonRepository.deleteById(lid);
 //		List<User> allUsers = userService.findAllUsers();
 //		for (User u : allUsers) {
 //			List<Course> allCourses = u.getCourses();
@@ -123,6 +126,5 @@ public class LessonService {
 //				}
 //			}
 //		}
-		lessonRepository.deleteById(lid);
 	}
 }

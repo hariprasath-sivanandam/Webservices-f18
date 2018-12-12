@@ -77,7 +77,8 @@ public class WidgetService {
 			newWidget.setTopic(topic);
 			List<Widget> new_widgets = topic.getWidgets();
 			new_widgets.add(newWidget);
-		    topic.setWidgets(new_widgets);				
+		    topic.setWidgets(new_widgets);
+		    topicRepository.save(topic);
 			return widgetRepository.save(newWidget);
 
 		}
@@ -117,6 +118,7 @@ public class WidgetService {
 	    		  if(w.getId()==widgetId)
 	    		    iterator.remove();
 	    	}
+	    	topicRepository.save(topic);
 			widgetRepository.deleteById(widgetId);
 	  }
 	 

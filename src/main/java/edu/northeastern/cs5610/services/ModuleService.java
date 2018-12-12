@@ -53,6 +53,7 @@ public class ModuleService {
 		    List<Module> new_modules = course.getModules();
 		    new_modules.add(newModule);
 		    course.setModules(new_modules);
+		    courseRepository.save(course);
 			return moduleRepository.save(newModule);
 		}
 		return null;
@@ -96,6 +97,7 @@ public class ModuleService {
     		  if(m.getId()==moduleId)
     		    iterator.remove();
     		}
+    	courseRepository.save(course);
     	moduleRepository.deleteById(moduleId);
 //       List<User> allUsers = userService.findAllUsers();
 //       for (User u : allUsers) {
